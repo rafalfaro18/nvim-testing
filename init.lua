@@ -4,7 +4,13 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
-vim.opt.shiftwidth = 4
+vim.opt.wrap = true
+
+-- Example: Set 4 spaces for tabs and indentation in init.lua
+vim.opt.tabstop = 4        -- Number of spaces a <Tab> in the file counts for
+vim.opt.shiftwidth = 4     -- Number of spaces to use for each step of (auto)indent
+vim.opt.expandtab = true   -- Use spaces instead of tabs
+vim.opt.softtabstop = 4    -- Number of spaces a <Tab> counts for while performing editing operations
 
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save file' })
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true })
