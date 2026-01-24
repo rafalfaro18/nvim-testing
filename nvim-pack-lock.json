@@ -4,6 +4,10 @@
       "rev": "47f91c4",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
+    "nvim-treesitter": {
+      "rev": "b67d29ce",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
     "nvim-web-devicons": {
       "rev": "8033534",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
