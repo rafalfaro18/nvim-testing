@@ -10,6 +10,12 @@ vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save file' })
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true })
 vim.keymap.set('n', '<leader>cd', vim.cmd.Ex, { desc = 'Explore' })
 
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
 vim.pack.add({
     'https://github.com/folke/tokyonight.nvim',
     'https://github.com/nvim-tree/nvim-web-devicons',
@@ -32,3 +38,4 @@ vim.cmd("colorscheme tokyonight")
 require('lualine').setup({
     theme = "tokyonight",
 })
+
