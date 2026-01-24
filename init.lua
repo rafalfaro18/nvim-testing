@@ -5,6 +5,8 @@ vim.g.maplocalleader = " "
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.wrap = true
+vim.opt.signcolumn = "yes"
+vim.opt.winborder = "rounded"
 
 -- Example: Set 4 spaces for tabs and indentation in init.lua
 vim.opt.tabstop = 4        -- Number of spaces a <Tab> in the file counts for
@@ -23,6 +25,7 @@ vim.pack.add({
     'https://github.com/nvim-lua/plenary.nvim',
     'https://github.com/nvim-telescope/telescope.nvim',
     'https://github.com/nvim-treesitter/nvim-treesitter',
+    'https://github.com/neovim/nvim-lspconfig',
 })
 
 local builtin = require('telescope.builtin')
@@ -57,5 +60,7 @@ vim.api.nvim_create_autocmd('FileType', {
       -- indentation, provided by nvim-treesitter
       vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end,
-  })
+})
 
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('pyright')
