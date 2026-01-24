@@ -8,6 +8,7 @@ vim.opt.shiftwidth = 4
 
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save file' })
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true })
+vim.keymap.set('n', '<leader>cd', vim.cmd.Ex, { desc = 'Explore' })
 
 vim.pack.add({
     'https://github.com/folke/tokyonight.nvim',
