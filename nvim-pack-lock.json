@@ -1,5 +1,13 @@
 {
   "plugins": {
+    "lualine.nvim": {
+      "rev": "47f91c4",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "nvim-web-devicons": {
+      "rev": "8033534",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
     "tokyonight.nvim": {
       "rev": "5da1b76",
       "src": "https://github.com/folke/tokyonight.nvim"

@@ -12,6 +12,8 @@ vim.keymap.set('n', '<leader>cd', vim.cmd.Ex, { desc = 'Explore' })
 
 vim.pack.add({
     'https://github.com/folke/tokyonight.nvim',
+    'https://github.com/nvim-tree/nvim-web-devicons',
+    'https://github.com/nvim-lualine/lualine.nvim',
 })
 
 require('tokyonight').setup({
@@ -24,3 +26,7 @@ require('tokyonight').setup({
 })
 
 vim.cmd("colorscheme tokyonight")
+
+require('lualine').setup({
+    theme = "tokyonight",
+})
