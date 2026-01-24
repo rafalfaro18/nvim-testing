@@ -8,6 +8,14 @@
       "rev": "8033534",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
+    "plenary.nvim": {
+      "rev": "b9fd522",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "telescope.nvim": {
+      "rev": "ad7d958",
+      "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
     "tokyonight.nvim": {
       "rev": "5da1b76",
       "src": "https://github.com/folke/tokyonight.nvim"
