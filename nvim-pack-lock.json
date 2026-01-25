@@ -4,6 +4,10 @@
       "rev": "47f91c4",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
+    "nvim-autopairs": {
+      "rev": "c2a0dd0",
+      "src": "https://github.com/windwp/nvim-autopairs"
+    },
     "nvim-lspconfig": {
       "rev": "419b082",
       "src": "https://github.com/neovim/nvim-lspconfig"

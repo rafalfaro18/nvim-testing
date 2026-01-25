@@ -17,6 +17,7 @@ vim.opt.softtabstop = 4    -- Number of spaces a <Tab> counts for while performi
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save file' })
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true })
 vim.keymap.set('n', '<leader>cd', vim.cmd.Ex, { desc = 'Explore' })
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'Format Document' })
 
 vim.pack.add({
     'https://github.com/folke/tokyonight.nvim',
@@ -26,6 +27,7 @@ vim.pack.add({
     'https://github.com/nvim-telescope/telescope.nvim',
     'https://github.com/nvim-treesitter/nvim-treesitter',
     'https://github.com/neovim/nvim-lspconfig',
+    'https://github.com/windwp/nvim-autopairs',
 })
 
 local builtin = require('telescope.builtin')
@@ -64,3 +66,4 @@ vim.api.nvim_create_autocmd('FileType', {
 
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('pyright')
+require("nvim-autopairs").setup({})
