@@ -15,8 +15,10 @@ vim.opt.expandtab = true   -- Use spaces instead of tabs
 vim.opt.softtabstop = 4    -- Number of spaces a <Tab> counts for while performing editing operations
 
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save file' })
+vim.keymap.set('n', '<leader>lg', ':terminal lazygit<CR>', { desc = 'Save file' })
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true })
 vim.keymap.set('n', '<leader>cd', vim.cmd.Ex, { desc = 'Explore' })
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'Format Document' })
 
 vim.pack.add({
     'https://github.com/folke/tokyonight.nvim',
@@ -26,6 +28,7 @@ vim.pack.add({
     'https://github.com/nvim-telescope/telescope.nvim',
     'https://github.com/nvim-treesitter/nvim-treesitter',
     'https://github.com/neovim/nvim-lspconfig',
+    'https://github.com/windwp/nvim-autopairs',
 })
 
 local builtin = require('telescope.builtin')
@@ -64,3 +67,39 @@ vim.api.nvim_create_autocmd('FileType', {
 
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('pyright')
+vim.lsp.enable('eslint')
+vim.lsp.enable('ts_ls')
+require("nvim-autopairs").setup({})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+      group = vim.api.nvim_create_augroup('my.lsp', {}),
+      callback = function(args)
+        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+        if client:supports_method('textDocument/implementation') then
+          -- Create a keymap for vim.lsp.buf.implementation ...
+        end
+
+        -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
+        if client:supports_method('textDocument/completion') then
+          -- Optional: trigger autocompletion on EVERY keypress. May be slow!
+          -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+          -- client.server_capabilities.completionProvider.triggerCharacters = chars
+
+          vim.lsp.completion.enable(true, client.id, args.buf, {autotrigger = true})
+        end
+
+        -- Auto-format ("lint") on save.
+        -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+        if not client:supports_method('textDocument/willSaveWaitUntil')
+            and client:supports_method('textDocument/formatting') then
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            group = vim.api.nvim_create_augroup('my.lsp', {clear=false}),
+            buffer = args.buf,
+            callback = function()
+              vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+            end,
+          })
+        end
+      end,
+    })
+
