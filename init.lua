@@ -66,4 +66,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('pyright')
+vim.lsp.enable('eslint')
+vim.lsp.enable('ts_ls')
 require("nvim-autopairs").setup({})
+
