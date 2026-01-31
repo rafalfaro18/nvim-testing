@@ -4,6 +4,10 @@
       "rev": "fab799d",
       "src": "https://github.com/saghen/blink.cmp"
     },
+    "gitsigns.nvim": {
+      "rev": "abf82a6",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "lualine.nvim": {
       "rev": "47f91c4",
       "src": "https://github.com/nvim-lualine/lualine.nvim"

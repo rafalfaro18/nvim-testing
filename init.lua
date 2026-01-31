@@ -31,7 +31,8 @@ vim.pack.add({
     'https://github.com/nvim-treesitter/nvim-treesitter',
     'https://github.com/neovim/nvim-lspconfig',
     'https://github.com/windwp/nvim-autopairs',
-    'https://github.com/saghen/blink.cmp'
+    'https://github.com/saghen/blink.cmp',
+    'https://github.com/lewis6991/gitsigns.nvim'
 })
 
 local builtin = require('telescope.builtin')
@@ -49,6 +50,8 @@ require('tokyonight').setup({
     },
 })
 
+require('gitsigns').setup({})
+
 vim.cmd("colorscheme tokyonight")
 
 require('lualine').setup({
@@ -56,7 +59,6 @@ require('lualine').setup({
 })
 
 require('blink.cmp').setup({
-    fuzzy = { implementation = "prefer_rust" },
     completion = { documentation = { auto_show = true }}
 })
 
