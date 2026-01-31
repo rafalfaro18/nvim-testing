@@ -19,6 +19,8 @@ vim.keymap.set('n', '<leader>lg', ':terminal lazygit<CR>', { desc = 'Save file' 
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true })
 vim.keymap.set('n', '<leader>cd', vim.cmd.Ex, { desc = 'Explore' })
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'Format Document' })
+vim.keymap.set({'n', 'v', 'x'}, '<leader>y', '"+y<CR>')
+vim.keymap.set({'n', 'v', 'x'}, '<leader>d', '"+d<CR>')
 
 vim.pack.add({
     'https://github.com/folke/tokyonight.nvim',
@@ -54,7 +56,8 @@ require('lualine').setup({
 })
 
 require('blink.cmp').setup({
-    fuzzy = { implementation = "prefer_rust" }
+    fuzzy = { implementation = "prefer_rust" },
+    completion = { documentation = { auto_show = true }}
 })
 
 vim.api.nvim_create_autocmd('FileType', {
