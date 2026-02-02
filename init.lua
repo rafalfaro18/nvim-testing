@@ -14,6 +14,8 @@ vim.opt.shiftwidth = 4   -- Number of spaces to use for each step of (auto)inden
 vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.softtabstop = 4  -- Number of spaces a <Tab> counts for while performing editing operations
 
+vim.diagnostic.config({ virtual_text = true })
+
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save file' })
 vim.keymap.set('n', '<leader>lg', ':terminal lazygit<CR>', { desc = 'Save file' })
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true })
@@ -80,5 +82,5 @@ vim.lsp.enable('eslint')
 vim.lsp.enable('ts_ls')
 require("nvim-autopairs").setup({})
 
-vim.lsp.config('lua_ls', { settings = { diagnostics = { globals = { "vim" } } } })
+vim.lsp.config('lua_ls', { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true), } } } })
 vim.lsp.enable('lua_ls')
