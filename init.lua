@@ -17,7 +17,7 @@ vim.opt.softtabstop = 4  -- Number of spaces a <Tab> counts for while performing
 vim.diagnostic.config({ virtual_text = true })
 
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save file' })
-vim.keymap.set('n', '<leader>lg', ':terminal lazygit<CR>', { desc = 'Save file' })
+vim.keymap.set('n', '<leader>lg', ':terminal lazygit<CR>', { desc = 'LazyGit (terminal)' })
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true })
 vim.keymap.set('n', '<leader>cd', vim.cmd.Ex, { desc = 'Explore' })
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'Format Document' })
@@ -34,7 +34,9 @@ vim.pack.add({
     'https://github.com/neovim/nvim-lspconfig',
     'https://github.com/windwp/nvim-autopairs',
     'https://github.com/saghen/blink.cmp',
-    'https://github.com/lewis6991/gitsigns.nvim'
+    'https://github.com/lewis6991/gitsigns.nvim',
+    'https://github.com/folke/todo-comments.nvim',
+    'https://github.com/folke/which-key.nvim'
 })
 
 local builtin = require('telescope.builtin')
@@ -52,7 +54,9 @@ require('tokyonight').setup({
     },
 })
 
+require('todo-comments').setup({})
 require('gitsigns').setup({})
+require('which-key').setup({})
 
 vim.cmd("colorscheme tokyonight")
 
