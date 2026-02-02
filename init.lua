@@ -60,9 +60,24 @@ require('lualine').setup({
     theme = "tokyonight",
 })
 
-require('blink.cmp').setup({
-    completion = { documentation = { auto_show = true }},
+require("blink.cmp").setup({
     signature = { enabled = true },
+    completion = {
+        documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 500
+        },
+        menu = {
+            auto_show = true,
+            draw = {
+                treesitter = {"lsp"},
+                columns = {
+                    { "kind_icon", "label", "label_description", gap = 1 },
+                    { "kind" }
+                }
+            }
+        }
+    }
 })
 
 vim.api.nvim_create_autocmd('FileType', {
