@@ -14,6 +14,8 @@ vim.opt.shiftwidth = 4   -- Number of spaces to use for each step of (auto)inden
 vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.softtabstop = 4  -- Number of spaces a <Tab> counts for while performing editing operations
 
+vim.diagnostic.config({ virtual_text = true })
+
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save file' })
 vim.keymap.set('n', '<leader>lg', ':terminal lazygit<CR>', { desc = 'Save file' })
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true })
@@ -58,8 +60,24 @@ require('lualine').setup({
     theme = "tokyonight",
 })
 
-require('blink.cmp').setup({
-    completion = { documentation = { auto_show = true }}
+require("blink.cmp").setup({
+    signature = { enabled = true },
+    completion = {
+        documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 500
+        },
+        menu = {
+            auto_show = true,
+            draw = {
+                treesitter = {"lsp"},
+                columns = {
+                    { "kind_icon", "label", "label_description", gap = 1 },
+                    { "kind" }
+                }
+            }
+        }
+    }
 })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -80,5 +98,5 @@ vim.lsp.enable('eslint')
 vim.lsp.enable('ts_ls')
 require("nvim-autopairs").setup({})
 
-vim.lsp.config('lua_ls', { settings = { diagnostics = { globals = { "vim" } } } })
+vim.lsp.config('lua_ls', { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true), } } } })
 vim.lsp.enable('lua_ls')
