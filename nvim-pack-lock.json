@@ -43,6 +43,10 @@
     "tokyonight.nvim": {
       "rev": "5da1b76",
       "src": "https://github.com/folke/tokyonight.nvim"
+    },
+    "which-key.nvim": {
+      "rev": "3aab214",
+      "src": "https://github.com/folke/which-key.nvim"
     }
   }
 }
