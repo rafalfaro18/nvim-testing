@@ -61,7 +61,8 @@ require('lualine').setup({
 })
 
 require('blink.cmp').setup({
-    completion = { documentation = { auto_show = true }}
+    completion = { documentation = { auto_show = true }},
+    signature = { enabled = true },
 })
 
 vim.api.nvim_create_autocmd('FileType', {
